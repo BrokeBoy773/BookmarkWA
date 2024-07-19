@@ -5,10 +5,13 @@
     {
         int id = Convert.ToInt32(Context.Request.Query["id"]);
         article = applicationDbContext.Articles.Where((x) => x.Id == id).First();
-    } 
+    }
+
+    HtmlString title = new HtmlString(article.Title);
+    HtmlString text = new HtmlString(article.Text);
 }
 
 <article>
-    @article.Title
-    @article.Text
+    @title
+    @text
 </article>

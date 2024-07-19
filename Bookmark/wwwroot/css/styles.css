@@ -119,8 +119,15 @@ details[open] summary:before {
 
     background-color: #D6D6D6;
 }
-.content article {
+article h1 {
+    margin: 10px;
     padding: 15px;
+}
+article p {
+    text-indent: 10px;
+
+    margin: 10px;
+    padding: 10px;
 }
 
 /* FOOTER */
