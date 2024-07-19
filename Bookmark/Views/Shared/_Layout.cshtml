@@ -9,16 +9,58 @@
     <title>BOOKMARK</title>
 </head>
 <body>
-    <header>
-        <div></div>
-        <nav></nav>
-    </header>
-    <main role="main">
-        <aside></aside>
-        <div></div>
-    </main>
-    <footer>
-        <div></div>
-    </footer>
+    <div class="container">
+        <header class="header">
+            <div class="logo"><span>BOOKMARK</span></div>
+            <nav class="nav">
+                <div class="nav-item"><a href="#">HOME</a></div>
+                <div class="nav-item"><a href="#">ABOUT</a></div>
+                <div class="nav-item"><a href="#">ARTICLES</a></div>
+                <div class="nav-item"><a href="#">PRODUCTS</a></div>
+                <div class="nav-item"><a href="#">GALLERY</a></div>
+                <div class="nav-item"><a href="#">CONTACTS</a></div>
+            </nav>
+        </header>
+        <aside class="sidebar">
+            <details>
+                <summary>СТАТЬИ</summary>
+                <ol>
+                    @{
+                        List<Article>? articles;
+
+                        using (ApplicationDbContext applicationDbContext = new ApplicationDbContext())
+                        {
+                            articles = applicationDbContext.Articles.ToList();
+                        }
+
+                        foreach (Article? article in articles)
+                        {
+                            <li><a href="@Url.Content($"/Home/Articles?id={article.Id}")">@Article.GetTitle(article)</a></li>
+                        }
+                    }
+                </ol>
+            </details>
+        </aside>
+        <main class="content" role="main">
+            @RenderBody()
+        </main>
+        <footer class="footer">
+            <div class="nav">
+                <div class="nav-item"><a href="#">HOME</a></div>
+                <div class="nav-item"><a href="#">ABOUT</a></div>
+                <div class="nav-item"><a href="#">ARTICLES</a></div>
+                <div class="nav-item"><a href="#">PRODUCTS</a></div>
+                <div class="nav-item"><a href="#">GALLERY</a></div>
+                <div class="nav-item"><a href="#">CONTACTS</a></div>
+            </div>
+            <div class="social">
+                <div class="social-item"><a href="#"><img src="@Url.Content("/svg/instagram.svg")" /></a></div>
+                <div class="social-item"><a href="#"><img src="@Url.Content("/svg/tiktok.svg")" /></a></div>
+                <div class="social-item"><a href="#"><img src="@Url.Content("/svg/vk.svg")" /></a></div>
+                <div class="social-item"><a href="#"><img src="@Url.Content("/svg/youtube.svg")" /></a></div>
+            </div>
+            <div class="logo"><span>ALL RIGHTS RESERVED</span></div>
+        </footer>
+    </div>
 </body>
 </html>

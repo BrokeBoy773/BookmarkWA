@@ -11,5 +11,27 @@
             Title = title;
             Text = text;
         }
+
+        public static string? GetTitle(Article? article)
+        {
+            if (article != null && article.Title != null)
+            {
+                string? title = article.Title.TrimStart("<h1>".ToCharArray());
+                title = title.TrimEnd("</h1>".ToCharArray());
+
+                if (title != null)
+                {
+                    return title;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            else
+            {
+                return null;
+            }
+        }
     }
 }

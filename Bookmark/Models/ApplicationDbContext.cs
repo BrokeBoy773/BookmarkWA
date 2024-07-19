@@ -11,7 +11,7 @@
 
         protected override void OnConfiguring(DbContextOptionsBuilder dbContextOptionsBuilder)
         {
-            dbContextOptionsBuilder.UseNpgsql("Host=localhost;Port=5432;Database=usersdb;Username=postgres;Password=7034");
+            dbContextOptionsBuilder.UseSqlite("Data Source=database.db");
         }
     }
 }

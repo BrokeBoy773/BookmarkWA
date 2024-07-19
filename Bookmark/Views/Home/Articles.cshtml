@@ -1,1 +1,14 @@
-﻿
+﻿@{
+    Article? article;
+
+    using (ApplicationDbContext applicationDbContext = new ApplicationDbContext())
+    {
+        int id = Convert.ToInt32(Context.Request.Query["id"]);
+        article = applicationDbContext.Articles.Where((x) => x.Id == id).First();
+    } 
+}
+
+<article>
+    @article.Title
+    @article.Text
+</article>
